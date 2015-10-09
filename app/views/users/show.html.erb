@@ -1,0 +1,5 @@
+<%= render partial: 'profile' %>
+<% if @user.approved? and !@user.client? %>
+  <%= render partial: 'shared/profile_tabs' %>
+  <%= render partial: 'overview'%>
+<% end %>

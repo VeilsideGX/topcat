@@ -3,7 +3,7 @@ class CreateArtists < ActiveRecord::Migration
     create_table :artists do |t|
       t.string :full_name
       t.string :music_genre
-      t.integer :country_id
+      t.string :country_id
       t.string :zip
       t.integer :user_id
       t.timestamps

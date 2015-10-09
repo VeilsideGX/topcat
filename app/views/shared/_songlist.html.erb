@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <div class="audio-playlist">
+    <% song_number = 0 %>
+    <% songs.each do |song, title| %>
+      <%= link_to "javascript:void(0)", class: 'song-play', 'data-song-number' => song_number do %>
+        <p><i class="fa fa-play"></i> <%= title %> </p>
+        <% song_number += 1 %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

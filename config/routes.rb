@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   devise_scope :user do
@@ -7,6 +9,26 @@ Rails.application.routes.draw do
   end
 
   get 'welcome/index'
+  get 'artist/:id/audio' => "users#audio", as: :artist_audio
+  get 'artist/:id/video' => "users#video", as: :artist_video
+
+  resources :users, path: 'profile' do
+    collection do
+      get 'email_list'
+      get 'check_user_assign'
+      post 'upload_audio'
+      post 'upload_video'
+    end
+  end
+  
+  resources :messages
+  resources :artists
+  resources :clients
+  resources :bands
+  resources :audio
+  resources :videos
+
+  get '/songs' => "audio#index", as: :my_songs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

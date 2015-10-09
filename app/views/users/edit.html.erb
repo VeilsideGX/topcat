@@ -1,0 +1,4 @@
+<%= render partial: 'shared/personal_info_tabs' %>
+<%= render partial: 'artists/edit_artist_info', locals:{user: @user} if current_user.artist? %>
+<%= render partial: 'bands/edit_band_info', locals:{user: @user} if current_user.band? %>
+<%= render partial: 'clients/edit_client_info', locals:{user: @user} if current_user.client? %>

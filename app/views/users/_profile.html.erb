@@ -1,0 +1,29 @@
+<div class="col-md-1"></div>
+<div class="col-md-10">
+  <div class="col-md-12">
+    <% unless @user.approved? %>
+      <p class="notice alert alert-alert text-center">This account is under review</p>
+    <% end %>
+  </div>
+  <div class="col-md-12 margin-top-20">
+    <div class="col-md-2">
+      <%= image_tag @user.profile_pic.url(:thumb) %>
+    </div>
+    <p> <%= link_to "Profile Settings", edit_user_path(current_user), class: 'btn btn-primary' if (@user.try(:id)==current_user.try(:id)) %> </p>
+    <% if @user.artist? %>
+      <%= render partial: 'artists/artist_primary_info' %>
+      <%= render partial: 'artists/artist_secondry_info' if @user.approved? %>
+    <% end %>
+
+    <% if @user.band? %>
+      <%= render partial: 'bands/band_primary_info' %>
+      <%= render partial: 'bands/band_secondry_info' if @user.approved? %>
+    <% end %>
+
+    <% if @user.client? %>
+      <%= render partial: 'clients/client_primary_info' %>
+      <%= render partial: 'clients/client_secondry_info' if @user.approved? %>
+    <% end %>
+  <div>
+</div>
+<div class="col-md-1"></div>

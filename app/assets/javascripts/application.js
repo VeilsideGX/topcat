@@ -16,4 +16,13 @@
 //= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
+//= require twitter/typeahead.min
 //= require_tree .
+
+NProgress.configure({
+  showSpinner: true,
+  ease: 'ease',
+  speed: 500
+});

@@ -1,0 +1,30 @@
+<div class="container top-space">
+  <h3 class="text-center">Secure Login to TomCat</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well login-box">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: "form-control"%>
+            <% unless flash[:alert].blank? %>
+              <label for="user_email" class="error"><%= flash[:alert]%></label>
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <% if devise_mapping.rememberable? -%>
+              <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+            <% end -%>
+          </div>
+
+          <div><%= f.submit "Log in", class: 'btn btn-success btn-login-submit' %></div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+
+      </div>
+    </div>
+  </div>
+</div>

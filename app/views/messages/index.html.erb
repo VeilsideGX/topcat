@@ -1,0 +1,46 @@
+<% if current_user.client? %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well message-box">
+        <%=link_to "Start Conversation", new_message_path %>
+      </div>
+    </div>
+  </div> 
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="well message-box">
+      <%@conversations.each do |conversation| %>
+        <p><%= link_to User.find(conversation.first).email, "#", class: "conv-user" %>
+          <%= link_to "Reply", "#", class: 'conv-reply' %>
+        </p>
+        <div class="display-none conv-detail">
+          <%conversation.last.each_with_index do |message, index| %>
+            <%= message.sender_id == current_user.id ? "Me" : message.sender.email %>
+            <%=message.content%>
+            <br><br>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row reply-message display-none">
+  <div class="col-md-12">
+    <div class="well message-box">
+      <%= form_for @message do |f| %>
+        <div class="form-group">
+          <%= f.text_field :receiver, placeholder: 'Email', class: "form-control message-to" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_area :content, placeholder: 'Please write you message here', class: "form-control", rows: "10" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Send', class: "form-control btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

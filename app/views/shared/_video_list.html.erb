@@ -1,0 +1,16 @@
+<div class="col-md-12">
+  <div class="video-list">
+    <% videos.each do |video| %>
+      <div class="col-md-4 margin-top-20 margin-bottom-20">
+        <% video_url = VideoInfo.new(video.video_url).embed_code %>
+        <%= video_url.html_safe %>
+        <% if @profile_page %>
+          <%= link_to "Delete", video_path(video), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+          <% unless video.is_approved %>
+            <p>This video is under review and it will not display on public page until approved by our staff.</p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

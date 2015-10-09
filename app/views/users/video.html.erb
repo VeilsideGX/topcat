@@ -1,0 +1,6 @@
+<%= render partial: 'profile' %>
+<% if @user.approved? %>
+  <%= render partial: 'shared/profile_tabs' %>
+<% end %>
+<%= render partial: 'shared/video_list', locals:{videos: @videos} %>
+

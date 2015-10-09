@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <div class="col-md-2">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav left-nav" style="height: 100%;">
+          <li class="active">
+              <a href="/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+          </li>
+          <li>
+              <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables </a>
+          </li>
+          <li><%=link_to messages_path do %>
+              <i class="fa fa-envelope"> Messages</i>
+            <% end %>
+          </li>
+          <li><a href="#" >Talents</a></li>
+          <li><a href="#" >Clients</a></li>
+          <li><a href="#" >Events</a></li>
+          <li><a href="#" >About</a></li>
+          <li><a href="#" >Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+<%end%>

@@ -1,0 +1,28 @@
+<%= render partial: 'shared/personal_info_tabs' %>
+<div class="col-md-12">
+  <div>
+    <% @songs.each do |song| %>
+      <div class='col-md-10'>
+        <%#= link_to "javascript:void(0)", class: 'my-song', 'data-song' => song.audio_file.url do %>
+          <!-- <p><i class="fa fa-play"></i> <%= song.audio_file_file_name %> </p> -->
+        <%# end %>
+        <span><p><%= song.audio_file_file_name %></p>
+        <%=content_tag(:audio, content_tag(:source, '', src: song.audio_file, type: 'audio/mpeg'), controls: '') %></span>
+        <% unless song.is_approved %>
+          <p>This song is under review and it will not display on public page until approved by our staff.</p>
+      <% end %>
+        <hr>
+      </div>
+      <div class='col-md-2'>
+        <%= link_to "Delete", audio_path(song), class: 'btn btn-danger', method: :delete, data: {confirm: "Are you sure?"} %>
+      </div>
+      
+    <% end %>
+  </div>
+</div>
+<div class="col-md-12">
+  <%= form_for(current_user, :url => upload_audio_users_path, method: :post, :html => { :multipart => true }) do |form| %>
+    <%= form.file_field :audio_file %>
+    <%= form.submit "Upload Song" %>
+  <% end %>
+</div>

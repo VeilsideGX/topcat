@@ -1,0 +1,36 @@
+<div class="col-md-8 margin-top-20">
+  <div class="col-md-2">
+    <%= render partial: 'users/change_profile_img' %>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <%= form_for @user, url: client_path(@user), method: :put do |f| %>
+      <div class="form-group">
+        <%= f.label :company_name %>
+        <%= f.text_field :company_name, autofocus: true, placeholder: 'Company Name', class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :company_email %>
+        <%= f.email_field :company_email, autofocus: true, placeholder: 'Company Email', class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :official_website %>
+        <%= f.text_field :official_website, autofocus: true, placeholder: 'Official Website', class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :country_id, "Country" %>
+        <%= f.country_select :country_id, {object: f.object, prompt: 'Country'}, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :zip %>
+        <%= f.text_field :zip, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

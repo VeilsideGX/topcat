@@ -1,0 +1,13 @@
+<%= render partial: 'shared/personal_info_tabs' %>
+<div class="col-md-12">
+  <% if current_user.approved? %>
+    <div class="col-md-12 margin-top-10">
+      <%= form_for(Video.new, :url => upload_video_users_path) do |form| %>
+        <%= form.text_field :video_url,  placeholder: 'Enter Youtube link' %>
+        <%= form.submit "Save", class: 'btn btn-primary active' %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render partial: 'shared/video_list', locals:{videos: @videos} %>
+
+</div>

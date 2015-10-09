@@ -1,0 +1,9 @@
+<div class="col-md-8 margin-top-20">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="<%= active_class(edit_user_path(current_user)) %>" > <%= link_to "Personal Details", edit_user_path(current_user) %> </li>
+    <li role="presentation" class="<%= active_class(edit_user_registration_path) %>"><%= link_to "Change Password", edit_user_registration_path %></li>
+    <li role="presentation" class="<%= active_class(artist_audio_path(current_user)) %>"> <%= link_to "Biography ", artist_audio_path(current_user) %> </li>
+    <li role="presentation" class="<%= active_class(my_songs_path) %>"><%= link_to "Audio", my_songs_path %></li>
+    <li role="presentation" class="<%= active_class(videos_path) %>"><%= link_to "Video", videos_path %></li>
+  </ul>
+</div>

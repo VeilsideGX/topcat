@@ -1,0 +1,29 @@
+<div class="col-md-8 margin-top-20">
+  <div class="col-md-2">
+    <%= render partial: 'users/change_profile_img' %>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <%= form_for @user, url: band_path(@user), method: :put do |f| %>
+      <div class="form-group">
+        <%= f.label :band_name %>
+        <%= f.text_field :band_name, autofocus: true, placeholder: 'Band Name', class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :music_genre %>
+        <%= f.select "music_genre", '<option>Music_Genre</option><option>Music_Genre1</option>'.html_safe, name: 'user[artist_attributes][music_genre]', class: 'form-control'  %>
+      </div>
+      <div class="form-group">
+        <%= f.label :country_id, "Country" %>
+        <%= f.country_select :country_id, {object: f.object, prompt: 'Country'}, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :zip %>
+        <%= f.text_field :zip, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Update", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -18,6 +18,8 @@ $(document).on 'ready page:load', ->
       $(".third-step").html msg.html
       $(".second-step").hide()
       $(".third-step").show()
+      $('.btn-login-submit').val("Create Account")
+      $('.btn-login-submit').show()
       $("#user_role").val(user_type)
 
   $("#new_user").validate
@@ -51,6 +53,7 @@ $(document).on 'ready page:load', ->
       if $(".third-step").is(':hidden')
         $(".first-step").hide()
         $(".second-step").show()
+        $('.btn-login-submit').hide()
       else
         form.submit()
    

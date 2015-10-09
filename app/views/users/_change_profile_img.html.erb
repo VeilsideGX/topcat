@@ -1,0 +1,5 @@
+<%= form_for(current_user, :url => user_path(current_user), method: :put, :html => { :multipart => true }) do |form| %>
+  <%= image_tag form.object.profile_pic.url(:thumb) %>
+  <%= form.file_field :profile_pic %>
+  <%= form.submit "Upload" %>
+<% end %>

@@ -1,0 +1,9 @@
+<% unless @user.client? %>
+  <%= render partial: 'profile' %>
+  <% if @user.approved?  %>
+  <%= render partial: 'shared/profile_tabs' %>
+  <div class="songs_list", data-songs-list="<%= @songlist.to_json %>"></div>
+    <%= render partial: 'shared/songlist', locals:{songs: @songlist} %>
+    <%= render partial: 'shared/audio_player' %>
+  <% end %>  
+<% end %>

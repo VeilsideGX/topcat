@@ -1,0 +1,39 @@
+<div class="form-group">
+  <%= text_field_tag :band_name, '', name: 'user[band_attributes][band_name]', class: 'form-control', placeholder: "Band Name" %>
+</div>  
+<div class="form-group">
+  <%=select_tag "music_genre", '<option>Music_Genre</option><option>Music_Genre1</option>'.html_safe, name: 'user[band_attributes][music_genre]', class: 'form-control'  %>
+</div>  
+<div class="form-group">
+  <%= country_select("user", "country", {selected: "US"}, {name: 'user[band_attributes][country_id]', class: 'form-control'}) %>
+</div>  
+<div class="form-group">
+  <%= text_field_tag :zip, '', name: 'user[band_attributes][zip]', class: 'form-control', placeholder: "ZIP/Postalcode" %>
+</div>  
+<div class="form-group">
+  <%= check_box_tag :accept, 'yes', false, name: 'user[terms_of_service]' %>
+   I agree to the Topcat.com <a href="javascript:void(0);">Terms & Conditions.</a>
+</div>
+
+<script>
+  $("#band_name").rules('add', {
+    required: true,
+    messages: {
+      required: "Enter Band Name"
+    }
+  });
+
+  $("#zip").rules('add', {
+    required: true,
+    messages: {
+        required: "Enter Zip Code"
+    }
+  });
+
+  $("#accept").rules('add', {
+    required: true,
+    messages: {
+      required: "Please Accept Terms & Conditions"
+    }
+  });
+</script>

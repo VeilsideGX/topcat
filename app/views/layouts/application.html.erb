@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
   <title>Topcat</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= render :partial => '/shared/header' %>
-
-<%= yield %>
-
+<div id="wrapper">
+  <%= render partial: 'shared/header' %>
+  <div class='row' style="background: #E0E0E0;">
+    <%= render partial: 'shared/left_navigation' %>
+    <% klass = user_signed_in? ? 'col-md-10' : 'col-md-12' %>
+      <div class="<%=klass%>">
+        <div class="container-fluid">
+          <%unless flash[:notice].blank? %>
+            <div class="alert alert-danger fade in" role="alert" data-dismiss="alert"><%= flash[:notice] %></div>
+            <%end%>
+            <%unless flash[:alert].blank? %>
+              <div class="alert alert-success fade in" role="alert" data-dismiss="alert"><%= flash[:alert] %></div>
+            <%end%>
+          <%= yield %>
+        </div>
+      <!-- /.container-fluid -->
+      </div>
+    <!-- /#page-wrapper -->
+  </div>
+</div>
+</div>
 </body>
 </html>
 
